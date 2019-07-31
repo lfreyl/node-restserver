@@ -4,9 +4,9 @@ const _ = require('underscore');
 const app = express();
 const Usuario = require('../models/usuario');
 const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticacion');
-app.get('/', function(req, res) {
-    res.json('Hello World')
-});
+// app.get('/', function(req, res) {
+//     res.json('Hello World')
+// });
 app.get('/usuario', verificaToken, (req, res) => {
     let desde = req.query.desde || 0;
     desde = Number(desde);
