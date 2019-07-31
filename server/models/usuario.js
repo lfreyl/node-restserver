@@ -39,6 +39,7 @@ let usuarioSchema = new Schema({
         default: false
     }
 });
+
 usuarioSchema.methods.toJSON = function() {
     let user = this;
     let userObject = user.toObject();
