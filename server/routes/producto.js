@@ -3,6 +3,8 @@ const { verificaToken, verificaAdmin_Role } = require('../middlewares/autenticac
 let app = express();
 let Producto = require('../models/producto');
 let Categoria = require('../models/categoria');
+
+
 //=============================
 //Obtener todos los productos
 //=============================
@@ -11,7 +13,7 @@ app.get('/productos', verificaToken, (req, res) => {
     let desde = req.query.desde || 0;
     desde = Number(desde);
     let limite = req.query.limite || 0;
-    Producto.find({ disponible: true }, 'nombre precioUni descripcion')
+    Producto.find({ disponible: true }, 'nombre precioUni descripcion img')
         .skip(desde)
         .limit(limite)
         .populate('usuario', 'nombre email')
@@ -218,7 +220,7 @@ app.delete('/productos/:id', verificaToken, (req, res) => {
 
 });
 
-module.exports = app;
+
 
 //=============================
 //Realizar busqueda de producto
@@ -254,3 +256,4 @@ app.get('/productos/buscar/:termino', verificaToken, (req, res) => {
 
         });
 })
+module.exports = app;
